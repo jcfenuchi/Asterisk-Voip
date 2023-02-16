@@ -1,0 +1,8 @@
+Crie troncos para as centrais Asterisk da sala (de 80 a 97, incluindo a 02 e a 06), conforme instruções das aulas, capítulo 7 do livro e apontamentos das aulas 10 e 11 do Google Classroom (quem usa os conhecimentos de bash scripts vistos em ISA trabalha menos...).
+
+Configure seu Asterisk para receber chamadas no número NN01, onde NN é o identificador do seu container. Registre-se no seu cliente VoIP com um usuário associado a este número na sua central e atenda as chamadas destinadas a você. Ajuste a parte numérica do CALLER ID das chamadas realizadas a partir deste ramal (usuário) para NNNN01 (se seu container for, por exemplo, 70, o seu identificados de chamadas deve ser 707001).
+
+Após a criação dos troncos e ramal, combine com um colega a realização de testes. Faça ligações para números na central dele e vice-versa. Você deve escutar o colega e ser escutado por ele nas chamadas de teste. Peça ao colega para confirmar o número que aparece no identificador de chamadas do softphone dele quando você liga para ele. Repita o teste com os demais colegas da sala. Lembre-se do combinado nas aulas. Os números dos colegas devem ser acessados da seguinte forma: CCXXXX, onde CC=código do container do colega e XXXX é o número na central dele com o qual você deseja contato. 
+
+OBS: O EXTEN.conf está com uma AGI QUE SERA COLOCADA FUTURAMENTE POIS È ATIVIDADE FINAL
+OBS-02: aqui tbm tem uma parte de uma atividade de fila.

@@ -1,0 +1,60 @@
+Crie a seguinte estrutura de Menus (um Menu principal e dois submenus aninhados ao principal) acessados na sua central Asterisk pelo número NN06 (NN=identificador do seu container):
+
+"Digite a opção desejada:
+
+1 - Informações de Sistema
+____1 - Hora certa
+____2 - Identificador de Chamadas
+____0 - Voltar ao Menu anterior
+
+2 - Efetuar ligação
+____1 - Ligar para o professor
+____2 - Ligar para o aluno
+____0 - Voltar ao Menu anterior
+
+0 - Sair"
+
+Crie os sons das opções de Menu com sua própria voz usando a atividade VOIP-05 (atividade anterior).
+
+Instruções gerais:
+
+1) No menu principal e nos dois submenus, usar um timeout de 10 segundos para o usuário indicar a opção desejada, após os quais a mensagem com as opções do menu ou do submenu em questão deve ser repetida. Opções inválidas também devem levar à repetição da mensagem do menu ou do submenu em questão.
+
+2) Para fonalizar a hora do sistema, utilize a função SayUnixTime em conjunto com a variável pré-definida ${EPOCH} (hora atual no formato Unix - número de segundos desde 01/01/1970). Vide:
+
+https://www.voip-info.org/asterisk-cmd-sayunixtime/
+https://www.voip-info.org/asterisk-variables/
+
+Exemplo:
+
+SayUnixTime(unixtime,timezone,format)
+SayUnixTime(${EPOCH},"America/Fortaleza",Ad \'digits/pt-de\' B \'digits/pt-de\' YT)
+=> Veja o significado de cada letra do parâmetro formato na referência indicada. Note também a inserção dos arquivos de som da preposição "de".
+
+3) Para fonalizar o identificador de chamadas, use a aplicação SAYDIGITS em conjunto com a função CALLERID(num)
+
+Exemplo:
+
+SayDigits(${CALLERID(num)})
+
+4) Para ligar para seu número, use "DIAL(SIP/usuario_de_registro_na_sua_central)
+
+5) Para ligar para o professor, crie um usuário no seu sip.conf identificado como "professor" e use DIAL(SIP/professor)
+
+[professor]
+type=friend
+context=mesmo_contexto_da_extensao_NN06
+secret=voip
+host=dynamic
+nat=force_rport,comedia
+directmedia=no
+callerid="Professor-Tel"<9999>
+
+6) Exemplo de extensão usando algumas das funções necessárias nesta atividade:
+
+exten => 310,1,Answer()
+same => n,ESpeak("Seu Número",any)
+same => n,SayDigits(${CALLERID(num)})
+same => n,ESpeak("Hora",any)
+same => n,SayUnixTime(${EPOCH},"America/Fortaleza",Ad \'digits/pt-de\' B \'digits/pt-de\' YT)
+same => n,Hangup()

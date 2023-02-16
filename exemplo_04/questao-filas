@@ -1,0 +1,49 @@
+Crie dois usuários na sua central.
+
+1) Usuário prof1; senha: professor;
+2) Usuário prof2; senha: professor;
+
+Não associe números a estes usuários no seu plano de numeração. Recarregue o protocolo SIP na sua central. Após 1 ou 2 minutos, necessários para que os operadores da fila, gerenciados pela central 06, se registrem na sua central nestes usuários que você acabou de criar, digite o comando "sip show peers" e verifique se o status de "prof1" e "prof2" está semelhante ao modelo abaixo:
+
+----------
+sip show peers
+(...)
+prof1/fila1  192.168.102.106  D  Yes  Yes  58170    OK (1 ms)        
+prof2/fila2  192.168.102.106  D  Yes  Yes  58170    OK (1 ms)       
+(...)
+----------
+
+Caso os usuários não se registrem após 1 ou 2 minutos, verifique a configuração do seu protocolo SIP e tente novamente (a central 06 envia pedido de registro destes usuários a todas as demais centrais da sala a cada 60 segundos).
+
+Na sua central, crie uma fila utilizando estratégia LINEAR, atendida de forma fixa pelos dois usuários que você criou, na seguinte ordem: prof1, prof2. Não use o template "StandardQueue" do livro, pois se assim proceder sua fila irá herdar a estratégia "rrmemory", em desacordo com o solicitado nesta atividade.
+
+Associe o número 1100 a sua fila.
+
+Agora crie 3 usuários para testes:
+
+1) fila01, caller-id: NN1101, número no seu dialplan 1101;
+2) fila02, caller-id: NN1102, número no seu dialplan 1102;
+3) fila03, caller-id: NN1103, número no seu dialplan 1103;
+
+Por fim, configure 3 cópias da versão portátil do MicroSip (vide aula sobre capturas) e registre cada uma delas com um dos 3 usuários acima.
+
+Acione as 3 instâncias do MicroSip portátil simultaneamente e garanta que os 3 usuários estejam registrados.
+
+Depois faça ligações para a sua fila seguindo EXATAMENTE a sequência de ações abaixo:
+
+1) usuário fila01 liga para a fila;
+2) usuário fila01 desliga;
+3) usuário fila01 liga para a fila;
+4) usuário fila01 desliga;
+5) usuário fila01 liga para a fila;
+6) usuário fila02 liga para a fila;
+7) usuário fila03 liga para a fila;
+8) usuário fila02 desliga;
+
+Observe, em cada ligação, qual foi o atendente que respondeu à ligação (os atendentes irão se identificar para você: atendente 1 é o "prof1" e atendente 2 é o "prof2"). Verifique se a ordem de atendimento está coerente com a estratégia da fila (LINEAR).
+
+Nas ações 1, 3, 5 e 6, só passe para a ação seguinte quando o atendente da fila o autorizar. Na ação 7, só passe para a ação seguinte quando escutar a música da fila. Nas ações de desligamento (2 e 4), pode executar a ação seguinte imediatamente após o desligamento.
+
+Caso seja detectado erro na tarefa o atendente irá lhe avisar. Neste caso, recomece a tarefa do início (ação 1).
+
+Atenção: se tudo estiver correto, após o passo 8, o atendente da fila irá lhe informar que a questão foi concluída com sucesso. Somente após esta confirmação, preencha o formulário da tarefa.

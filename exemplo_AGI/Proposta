@@ -1,0 +1,23 @@
+EM NOSSA TURMA TODOS OS ALUNOS TEM UM CONTAINER COM UM ID E senha
+E EM NOSSAS AULAS TEMOS UMA ROTINA DE REALIZAR A ENTRADA NA CHAMADA E SAIDA NA CHAMADA
+SENDO ASSIM ULTILIZAMOS OS ASTERISK PARA QUE ELE FAÇA ISSO ATRAVES DE UMA LIGAÇÃO
+TANTO COMO ENTRADA E SAIDA COMO VER QUANTAS FALTAS O ALUNO TEM.
+
+
+Projeto AGI - 2022.2
+
+Entrada.
+
+    a) Solicitar container
+    b) Solicitar senha
+
+    Validar credenciais. Se incorretas, solicitar novamente. Se corretas, passar para o Menu principal
+
+Menu principal
+
+1 - MARCAR CHAMADA
+    1 - Marcar entrada
+    2 - Marcar saída
+    Informar se entrada/saída foram processadas com sucesso.
+2 - CONSULTAR FALTAS
+    ----- diz o numero de FALTAS

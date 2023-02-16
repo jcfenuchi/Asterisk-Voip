@@ -1,0 +1,39 @@
+Você é o responsável pela programação do Asterisk em um grande call center.
+Foi solicitado que você criasse uma extensão para suporte a operações bancárias de 4 grandes bancos.
+O número divulgado pelos bancos aos seus clientes é no seguinte formato:
+
+08001NNTBBB
+
+Onde :
+
+08001 - Parte fixa do número;
+NN - Código do seu container (fixo);
+T - Tipo de operação: 0 - Conta Corrente ou 1 - Cartão de crédito;
+BBB - Código do banco:
+
+001 - Banco do Brasil,
+237 - Bradesco,
+341 - Itaú,
+033 - Santander.
+
+Assim, os clientes de cartão de crédito do banco Santander irão ligar para o número 08001NN1033.
+
+Crie o protótipo funcional DE UMA ÚNICA extensão de atendimento (necessariamente usando "pattern matching" - correspondência de padrão) que deverá se comportar da seguinte forma:
+
+1) Atender a ligação;
+2) Cumprimentar o cliente com "Bom dia", "Boa tarde" ou "Boa Noite", em função do horário da ligação;
+3) Fonalizar "Você ligou para o atendimento de ";
+4) Fonalizar "Conta Corrente" ou "Cartão de Crédito", dependendo do número discado pelo cliente (dígito T);
+5) Fonalizar "do";
+6) Fonalizar o nome do banco em função do número discado pelo cliente (dígitos BBB);
+7) Fonalizar a mensagem "Você ligou do número ";
+8) Fonalizar o CALLER-ID do cliente;
+9) Fonalizar a mensagem "Todos os nossos atendentes estão ocupados. Grave sua mensagem que retornaremos oportunamente".
+10) Gravar a mensagem do cliente no correio de voz da caixa postal 0001, cuja senha de acesso será "1234"
+11) Desligar;
+
+Se o tipo de operação (T) ou o código do banco (BBB) não corresponderem às opções existentes, após o cumprimento do item 2, deve ser fonalizada a mensagem "Número inválido" e a ligação deverá ser encerrada.
+
+Crie uma extensão 9797 que possibilite que as mensagens do correio de voz possam ser escutadas.
+
+Todos os áudios devem ser gravados com sua própria voz.
